@@ -26,6 +26,7 @@
             $_base_de_datos
         )
             or die("Error de conexión");
+            echo "hola";
 
         //
         $usuario = $_POST["usuario"];
