@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <?php require './bootsrap.php' ?>
 
 </head>
 
@@ -26,11 +26,11 @@
             $_base_de_datos
         )
             or die("Error de conexión");
-            echo "hola";
 
         //
         $usuario = $_POST["usuario"];
         $contrasenia = $_POST["contrasenia"];
+        $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
         $fechaNacimiento = $_POST["nacimiento"];
         
 
@@ -54,7 +54,7 @@
         <input class="form-control" type="text" name="usuario">
         <?php if (isset($err_usuario)) echo $err_usuario ?>
         <br><br>
-        <label class="form-label">Contrasenia:</label>
+        <label class="form-label">Contraseña:</label>
         <input class="form-control" type="text" name="contrasenia">
         <br><br>
         <label class="form-label">Fecha de nacimiento</label>
