@@ -17,7 +17,7 @@
         $pegi = $fila["pegi"];
         $compania = $fila["compania"];
 
-        $nuevo_videojuego = new Videojuego($id_videojuego, $titulo, $pegi, $compania);
+        //$nuevo_videojuego = new Videojuego($id_videojuego, $titulo, $pegi, $compania);
         array_push($videojuegos, $nuevo_videojuego);
     }
     // function obetenerVideojuegosObjetos("SELECT * FROM videojuegos WHERE pegi=13);
