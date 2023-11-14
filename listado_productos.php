@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require './bootsrap.php' ?>
+    <link rel="stylesheet" href="css/listado_productos.css">
 
     <title>Listado productos</title>
     <?php 
@@ -24,12 +25,12 @@
         echo "<table class='table table-borderless'>";
         echo "<thead class='table-danger'>";
         echo "<tr>";
-        echo "<th scope='col' >id</th>";
-        echo "<th scope='col' >nombre</th>";
-        echo "<th scope='col' >precio</th>";
-        echo "<th scope='col' >descripcion</th>";
-        echo "<th scope='col' >cantidad</th>";
-        echo "<th scope='col' >imagen</th>";
+        echo "<th class='a' scope='col' >id</th>";
+        echo "<th class='a' scope='col' >nombre</th>";
+        echo "<th class='a' scope='col' >precio</th>";
+        echo "<th class='a' scope='col' >descripcion</th>";
+        echo "<th class='a' scope='col' >cantidad</th>";
+        echo "<th class='a' scope='col' >imagen</th>";
         echo "</tr>";
         echo "</thead>";
         echo "<tbody>";

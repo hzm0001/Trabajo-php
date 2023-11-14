@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require './bootsrap.php' ?>
+    <link rel="stylesheet" href="./css/login.css">
 
     <title>Document</title>
 
@@ -14,14 +15,14 @@
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
         $_servidor = 'localhost';
         $_usuario = 'root';
         $_contrasena = 'medac';
         $_base_de_datos = 'amazon';
 
         $conexion = new Mysqli(
-            $_servidor ,
+            $_servidor,
             $_usuario,
             $_contrasena,
             $_base_de_datos
@@ -31,42 +32,51 @@
         //
         $usuario = $_POST["usuario"];
         $contrasenia = $_POST["contrasenia"];
-        
+
         $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
-        $resultado = $conexion -> query($sql);
+        $resultado = $conexion->query($sql);
 
-        if($resultado -> num_rows === 0){
+        if ($resultado->num_rows === 0) {
             echo "El usuario/contraseña son incorrectos";
-        }else{
+        } else {
 
-            while($fila = $resultado -> fetch_assoc()){ //coje una tabla y cada fila la transforma en una array
+            while ($fila = $resultado->fetch_assoc()) { //coje una tabla y cada fila la transforma en una array
                 $password_cifrada = $fila["contrasena"];
             }
 
             $acceso_valido = password_verify($contrasenia, $password_cifrada);
 
-            if($acceso_valido){
+            if ($acceso_valido) {
                 session_start();
                 $_SESSION["usuario"] = $usuario;
                 header('location: producto.php');
-            }else{
+            } else {
                 echo "El usuario/contraseña son incorrectos";
             }
-    }}
+        }
+    }
     ?>
-    <div class="mb-3 w-100" style="display: flex; justify-content:center; align-items:center;flex-direction:column;">
-    <h1>Formulario para crear un nuevo Usuario</h1>
-    <form action="" method="post" class="w-25 p-4" style="border: 1px solid gray; border-radius:10px">
-        <label class="form-label">Usuario:</label>
-        <input class="form-control" type="text" name="usuario">
-        <?php if (isset($err_usuario)) echo $err_usuario ?>
-        <br><br>
-        <label class="form-label">Contraseña:</label>
-        <input class="form-control" type="text" name="contrasenia">
-        <br><br>
-        <?php if (isset($err_fecha)) echo $err_fecha ?>
-        <input class="btn btn-primary mb-3" type="submit" value="enviar">
-    </form>
+    <div class="intro">
+        <div style="padding-right: 3em;">
+
+            <img src="./img/amazom.jpg" alt="" width="400px">
+        </div>
+        <form action="" method="post" style="border-left: 2px solid #FF9900; padding-left:3em">
+            <div class="caja">
+                <h3 class="h3_login">Ingrese su cuenta</h3>
+                <div class="cajaInterna">
+                <label class="label_nombre">Usuario:</label>
+                <input class="form-control" type="text" name="usuario">
+                <?php if (isset($err_usuario)) echo $err_usuario ?>
+                <br><br>
+                <label class="label_nombre">Contraseña:</label>
+                <input class="form-control" type="password" name="contrasenia">
+                </div>
+            </div>
+            <br><br>
+            <?php if (isset($err_fecha)) echo $err_fecha ?>
+            <input class="btn btn-primary mb-3" type="submit" value="enviar">
+        </form>
     </div>
 
 
