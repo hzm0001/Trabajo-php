@@ -47,9 +47,9 @@
         }
     }
     ?>
-    <div class="mb-3">
-    <h1>Formulario para crear un nuevo Usuario</h1>
-    <form action="" method="post">
+    <div class="mb-3" style="margin: 100px 300px; border:5px solid black">
+    <h1 style="background-color: black; color:white;  text-align: center; padding:20px;">Formulario para crear un nuevo Usuario</h1>
+    <form style="padding: 50px;" action="" method="post">
         <label class="form-label">Usuario:</label>
         <input class="form-control" type="text" name="usuario">
         <?php if (isset($err_usuario)) echo $err_usuario ?>
