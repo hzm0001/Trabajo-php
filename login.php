@@ -61,7 +61,7 @@
 
             <img src="./img/amazom.jpg" alt="" width="400px">
         </div>
-        <form action="" method="post" style="border-left: 2px solid #FF9900; padding-left:3em">
+        <form action="" method="post" style="border-left: 2px solid rgb(238, 237, 237); padding-left:3em">
             <div class="caja">
                 <h3 class="h3_login">Ingrese su cuenta</h3>
                 <div class="cajaInterna">
@@ -74,8 +74,10 @@
                 </div>
             </div>
             <br><br>
+            <div class="enviar">
             <?php if (isset($err_fecha)) echo $err_fecha ?>
-            <input class="btn btn-primary mb-3" type="submit" value="enviar">
+            <input class="btn btn-primary mb-3 boton" type="submit" value="Login">
+            </div>
         </form>
     </div>
 

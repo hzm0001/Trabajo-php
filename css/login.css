@@ -15,8 +15,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    width:1200px;
+    width: 100%;
     background-color:#232F3E;
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -25,13 +24,25 @@ body{
     -o-border-radius: 3px;
 }
 .h3_login{
-    color: white;
+    color: rgb(238, 237, 237);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .label_nombre{
-    color: white;
+    color: rgb(238, 237, 237);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .cajaInterna{
     padding: 10px;
+}
+.boton{
+    border: none!important;
+    background-color: white;
+    color: rgb(68, 68, 68);
+    margin-left: 10px;
+    font-weight: bold;
+}
+.boton:hover{
+    background-color: #FF9900!important;
+    font-weight: bold;
+
 }
