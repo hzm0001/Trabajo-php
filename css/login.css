@@ -24,7 +24,7 @@ body{
     -o-border-radius: 3px;
 }
 .h3_login{
-    color: rgb(238, 237, 237);
+    color: #FF9900;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .label_nombre{
@@ -40,9 +40,25 @@ body{
     color: rgb(68, 68, 68);
     margin-left: 10px;
     font-weight: bold;
+    margin-top: 25px;
 }
 .boton:hover{
     background-color: #FF9900!important;
     font-weight: bold;
 
+}
+.registro{
+    display: flex;
+    margin-left: 10px;
+}
+.enlace_registrar{
+    color: #FF9900;
+    text-decoration: none;
+    margin-left: 4px;
+}
+.texto-registrar{
+    color: white;
+}
+.enlace_registrar:hover{
+    text-decoration: underline;
 }

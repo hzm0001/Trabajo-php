@@ -37,7 +37,9 @@
         $resultado = $conexion->query($sql);
 
         if ($resultado->num_rows === 0) {
-            echo "El usuario/contraseña son incorrectos";
+            $error =  '<div class="alert alert-danger" role="alert">
+            El usuario/contraseña son incorrectos
+          </div>';
         } else {
 
             while ($fila = $resultado->fetch_assoc()) { //coje una tabla y cada fila la transforma en una array
@@ -51,7 +53,9 @@
                 $_SESSION["usuario"] = $usuario;
                 header('location: producto.php');
             } else {
-                echo "El usuario/contraseña son incorrectos";
+                $error =  '<div class="alert alert-danger" role="alert">
+            El usuario/contraseña son incorrectos
+          </div>';
             }
         }
     }
@@ -64,6 +68,7 @@
         <form action="" method="post" style="border-left: 2px solid rgb(238, 237, 237); padding-left:3em">
             <div class="caja">
                 <h3 class="h3_login">Ingrese su cuenta</h3>
+                <?php if (isset($error)) echo $error ?>
                 <div class="cajaInterna">
                 <label class="label_nombre">Usuario:</label>
                 <input class="form-control" type="text" name="usuario">
@@ -73,10 +78,14 @@
                 <input class="form-control" type="password" name="contrasenia">
                 </div>
             </div>
-            <br><br>
+            <div class="registro">
+                <p class="texto-registrar">Si no tienes cuenta registrate</p>
+                <a class="enlace_registrar" href="registro.php">  aquí</a>
+            </div>
             <div class="enviar">
             <?php if (isset($err_fecha)) echo $err_fecha ?>
             <input class="btn btn-primary mb-3 boton" type="submit" value="Login">
+            
             </div>
         </form>
     </div>

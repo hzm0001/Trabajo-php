@@ -59,10 +59,9 @@
     </div>
   </div>
 </nav>
-
-    <div class="mb-3">
-        <h1>Formulario para crear un nuevo producto</h1>
-        <form action="" method="post">
+    <div class="mb-3 d-flex" style="flex-direction:column; justify-content:center; align-items:center;">
+        <h1 class="h1-producto">Formulario para crear un nuevo producto</h1>
+        <form action="" method="post" style="border: 1px solid black;width:33%;border-radius:15px;padding:3em">
             <label class="form-label">Nombre del producto:</label>
             <input class="form-control" type="text" name="nombre">
             <?php if (isset($err_usuario)) echo $err_usuario ?>
@@ -77,6 +76,8 @@
             <br><br>
             <label class="form-label" for="">Cantidad</label>
             <input class="form-control" type="number" name="cantidad"><br>
+            <label class="form-label" for="">Imagen</label>
+            <input class="form-control" type="" name="imagen"><br>
             <input class="btn btn-primary mb-3" type="submit" value="enviar">
         </form>
     </div>
