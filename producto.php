@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,41 @@
         $precio = floatval($_POST['precio']);
         $descripcion = $_POST['descripcion'];
         $cantidad = $_POST['cantidad'];
-        $sql = "INSERT INTO Productos (nombreProducto, precio, descripcion, cantidad) VALUES ('$nombre', $precio, '$descripcion', $cantidad)";
+
+        if (strlen($nombre) > 40) {
+          die("Error: El nombre del producto debe tener como máximo 40 caracteres.");
+      }
+ 
+      if ($precio < 0 || $precio > 99999.99) {
+          $error = '<div class="alert alert-primary" role="alert">
+         El precio no esta entre 0 y 99999.99.
+         </div>';
+      }
+
+ 
+      if (strlen($descripcion) > 255) {
+          die("Error: La descripción debe tener como máximo 255 caracteres.");
+      }
+ 
+      if ($cantidad < 0 || $cantidad > 99999) {
+          die("Error: La cantidad debe estar entre 0 y 99999.");
+      }
+ 
+
+     $nombre_fichero = $_FILES["imagen"];
+     $nombre_fichero = $nombre_fichero['name'];
+     $ruta_termporal = $_FILES["imagen"]["tmp_name"];
+     $formato = $_FILES["imagen"]["type"];
+     $ruta_final = "./img/" . $nombre_fichero;
+
+     move_uploaded_file(
+         $ruta_termporal,
+         $ruta_final
+     );
+
+        // Insertar los datos en la tabla "Productos"
+
+        $sql = "INSERT INTO Productos (nombreProducto, precio, descripcion, cantidad, imagen) VALUES ('$nombre', '$precio', '$descripcion', '$cantidad', '$ruta_final')";
 
         if ($conn->query($sql) == TRUE) {
             $success =  '<div class="alert alert-success" role="alert">
@@ -29,12 +63,9 @@
           </div>';
         } else {
             echo "Error al añadir producto";
-        }
-    }
 
-
-    // Insertar los datos en la tabla "Productos"
-
+  }
+}
 
     $conn->close();
     ?>
@@ -50,7 +81,7 @@
           <a class="nav-link active" aria-current="page" href="login.php">Logueate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="listado_productos.php">Productos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -59,9 +90,10 @@
     </div>
   </div>
 </nav>
+    <?php echo "<h1>Bienvenid@: $nombre</h1>"?>
     <div class="mb-3 d-flex" style="flex-direction:column; justify-content:center; align-items:center;">
         <h1 class="h1-producto">Formulario para crear un nuevo producto</h1>
-        <form action="" method="post" style="border: 1px solid black;width:33%;border-radius:15px;padding:3em">
+        <form action="" method="post" enctype="multipart/form-data" style="border: 1px solid black;width:33%;border-radius:15px;padding:3em">
             <label class="form-label">Nombre del producto:</label>
             <input class="form-control" type="text" name="nombre">
             <?php if (isset($err_usuario)) echo $err_usuario ?>
@@ -76,8 +108,8 @@
             <br><br>
             <label class="form-label" for="">Cantidad</label>
             <input class="form-control" type="number" name="cantidad"><br>
-            <label class="form-label" for="">Imagen</label>
-            <input class="form-control" type="" name="imagen"><br>
+            <label class="form-label">Imagen</label>
+                <input class="form-control" type="file" name="imagen">
             <input class="btn btn-primary mb-3" type="submit" value="enviar">
         </form>
     </div>

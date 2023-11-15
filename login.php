@@ -7,7 +7,7 @@
     <?php require './bootsrap.php' ?>
     <link rel="stylesheet" href="./css/login.css">
 
-    <title>Document</title>
+    <title>Login</title>
 
 </head>
 
