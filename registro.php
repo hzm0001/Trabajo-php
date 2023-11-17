@@ -33,6 +33,15 @@
         $contrasenia = password_hash($contrasenia, PASSWORD_DEFAULT);
         $fechaNacimiento = $_POST["nacimiento"];
 
+        if (strlen($usuario) < 4 || strlen($usuario) > 12 || !preg_match('/^[a-zA-Z_]+$/', $usuario)) {
+            die("Error: El nombre de usuario no es válido.");
+        }
+        
+        $edad = date_diff(date_create($fechaNacimiento), date_create('today'))->y;
+        if ($edad < 12 || $edad > 120) {
+            die("Error: Debes tener entre 12 y 120 años para registrarte.");
+        } {
+
 
         if (
             isset($usuario) && isset($contrasenia)
@@ -46,6 +55,7 @@
             $conexion->query($sql);
         }
     }
+}
     ?>
     <div class="mb-3" style="margin: 100px 300px; border:5px solid black">
         <h1 style="background-color: black; color:white;  text-align: center; padding:20px;">Formulario para crear un nuevo Usuario</h1>

@@ -14,6 +14,7 @@
 <body>
 
     <?php
+     session_start();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_servidor = 'localhost';
@@ -32,6 +33,7 @@
         //
         $usuario = $_POST["usuario"];
         $contrasenia = $_POST["contrasenia"];
+        
 
         $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
         $resultado = $conexion->query($sql);
@@ -44,6 +46,7 @@
 
             while ($fila = $resultado->fetch_assoc()) { //coje una tabla y cada fila la transforma en una array
                 $password_cifrada = $fila["contrasena"];
+                $_SESSION["rol"] = $fila["rol"];
             }
 
             $acceso_valido = password_verify($contrasenia, $password_cifrada);
@@ -51,7 +54,7 @@
             if ($acceso_valido) {
                 session_start();
                 $_SESSION["usuario"] = $usuario;
-                header('location: producto.php');
+                header('location: listado_productos.php');
             } else {
                 $error =  '<div class="alert alert-danger" role="alert">
             El usuario/contraseña son incorrectos

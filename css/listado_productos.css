@@ -17,4 +17,18 @@ img{
 }
 .a{
     background-color: blanchedalmond!important;
+    text-align: center;
+    
+}
+
+
+.tabla_listado{
+    width: 100%!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.tablita{
+    width: 80em!important;
 }
