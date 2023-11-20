@@ -20,7 +20,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="login.php">Logueate</a>
+            <a class="nav-link active" aria-current="page" href="login.php">
+
+            <?php session_start();
+             if (isset($_SESSION["usuario"])) {
+                echo '<a style= color: white; href="./logout.php">Logout</a>';
+            } else {
+              echo '<a style= color: white; href="./login.php">Login</a>';
+            }?>
+  </a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="listado_productos.php">Productos</a>
@@ -33,18 +41,11 @@
   </div>
 </nav> 
 
-  <?php session_start();
-echo "<h1>Bienvenid@: " . $_SESSION["usuario"] . "</h1>";
-
-  //comprobar si ha iniciado sesion y si no pues le pondremos la sesion con valor a invitado y un boton de login y si ha iniciado le pondremos un boton de logout
-  if (isset($_SESSION["usuario"])) {
-    echo '<a href="./logout.php">Logout</a>';
-  } else {
-    echo '<a href="./login.php">Login</a>';
-  }
-  if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin') {
+  <?php 
+echo "<h1>Bienvenid@: " . $_SESSION["usuario"] . "</h1>"; 
+if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin') {
     // Muestra el botón de "Añadir Producto"
-    echo '<a href="producto.php"><button>Añadir Producto</button></a>';
+    echo '<a class= href="producto.php"><button>Añadir Producto</button></a>';
 }
   require './bd.php';
   // Consulta para obtener los nombres de los productos y sus imágenes
@@ -54,24 +55,27 @@ echo "<h1>Bienvenid@: " . $_SESSION["usuario"] . "</h1>";
   echo "<table class='table table-borderless tablita' style='width:80em; float:center'>";
   echo "<thead class='table-danger'>";
   echo "<tr>";
-  echo "<th class='a' scope='col' >id</th>";
-  echo "<th class='a' scope='col' >nombre</th>";
-  echo "<th class='a' scope='col' >precio</th>";
-  echo "<th class='a' scope='col' >descripcion</th>";
-  echo "<th class='a' scope='col' >cantidad</th>";
-  echo "<th class='a' scope='col' >imagen</th>";
+  echo "<th class='a' scope='col' >Id</th>";
+  echo "<th class='a' scope='col' >Nombre</th>";
+  echo "<th class='a' scope='col' >Precio</th>";
+  echo "<th class='a' scope='col' >Descripcion</th>";
+  echo "<th class='a' scope='col' >Cantidad</th>";
+  echo "<th class='a' scope='col' >Imagen</th>";
+  echo "<th class='a' scope='col' >Añadir producto</th>";
+
   echo "</tr>";
   echo "</thead>";
   echo "<tbody>";
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
       echo '<tr>';
-      echo '<td>' . $row["idProducto"] . '</td>';
-      echo '<td>' . $row["nombreProducto"] . '</td>';
-      echo '<td>' . $row["precio"] . '</td>';
-      echo '<td>' . $row["descripcion"] . '</td>';
-      echo '<td>' . $row["cantidad"] . '</td>';
-      echo '<td><img src="' . $row["imagen"] . '" alt="' . $row["nombreProducto"] . '" width="100" height="100"></td>';
+      echo '<td class="b">' . $row["idProducto"] . '</td>';
+      echo '<td class="b">' . $row["nombreProducto"] . '</td>';
+      echo '<td class="b">' . $row["precio"] . '</td>';
+      echo '<td class="b">' . $row["descripcion"] . '</td>';
+      echo '<td class="b">' . $row["cantidad"] . '</td>';
+      echo '<td class="b"><img src="' . $row["imagen"] . '" alt="' . $row["nombreProducto"] . '" width="100" height="100"></td>';
+      echo '<td class="b"><button type="button" class="btn btn-warning"> <a href="cesta.php">Añadir cestaa </a></button><input type="number" max="5"; min="1"; style="width:40px;"></td>';
       echo '</tr>';
     }
   } else {
