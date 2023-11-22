@@ -1,0 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+img{
+    width: 120px;
+}
+.divaeditar{
+    background-color: #232f3e!important;
+}
+.nav-link{
+    color: white!important;
+}
+th.a{   
+    background-color: #232f3e!important;
+    color: whitesmoke;
+    text-align: center;
+}
+
+
+.tabla_listado{
+    width: 100%!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    margin-top: 1000px!important;
+}
+
+.tablita{
+    width: 80em!important;
+    border: 2px black solid!important;
+}
+.b{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.cesta{
+    margin-left: 80%;
+    width: 150px;
+    margin-bottom: 10px;
+}

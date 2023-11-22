@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+img{
+    width: 120px;
+}
+.divaeditar{
+    background-color: #232f3e!important;
+}
+.nav-link{
+    color: white!important;
+}
+.tabla{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+.a{
+    font-size: 20px;
+    background-color: #232f3e;
+    color: white;
+    border: white 1px solid;
+}
